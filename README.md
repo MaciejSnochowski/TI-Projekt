@@ -1,0 +1,7 @@
+# TI-Projekt
+Q Demon sele pa są są
+TO DO LIST:
+- LOGOWANIE/REJESTRACJA
+- KURSY
+- DB
+- DYNAMICZNA TABELA
