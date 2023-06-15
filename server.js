@@ -1,11 +1,29 @@
+// npm run dev to run  nodemon
+//npm rund build:css to reload tailwind components 
 const express = require('express')
 const app = express()
+const path = require("path");
+const router= express.Router();
+
+//baza danych
 const moongose = require('mongoose')
 const User = require('./model/userModel')
+//informacje na temat serwera
+const port = 3000;
+const address='127.0.1.1';
+app.listen(port,address)
+{
 
+    console.log("server running on port "+port);
+}
+
+app.set('src', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname,'public')));
 app.get("/",(req,res)=>{
-    res.send()
+    res.render('index')
 })
+
 
 app.post('/user', async (req,res)=>{
     try{
@@ -36,3 +54,5 @@ moongose.connect('mongodb+srv://root:aeuWsd3RhckwEik2@ti-project-api.ly7jac8.mon
             .catch(()=>{
                 console.log('smth went wrong')
             });
+
+
