@@ -3,23 +3,18 @@ const mongoose=require('mongoose')
 const userSchema= mongoose.Schema(
 
 {
-    name:{
+    username:{
         type:String,
-       // required: [true,"Enter username"]
-       required: false
+       
+        required: [true,"Enter username"]
+      // required: false
     },
     password:{
         type:String,
-       // required: [true,"Enter password!"]
-       required: false
+        required: [true,"Enter password"]
+     //  required: false
     },
-    ratio:{ //total win or lose 
-        type: Number,
-        required: false
-    },cash:{
-        type: Number,
-        require: [true,0]
-    }
+       
 },
 {
     timestamps: true

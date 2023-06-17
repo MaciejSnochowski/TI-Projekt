@@ -31,3 +31,26 @@
       </ul>
     </div>
   </div>
+
+
+
+
+  post rejestracja
+      try{
+            
+            const hashPassword= await bcrypt.hash(req.body.password,10)
+        console.log("post done");
+        const user= await User.create({
+            username: req.body.login,
+            password:req.body.password,
+            confirmation_password: req.body.password_sec
+        });
+        console.log(user,username,password,confirmation_password);
+        console.log(res.status(200).json(user));
+        res.redirect('/logowanie') 
+
+    }catch(error){
+        console.log("error:"+error.message);
+        res.status(500).json({message: error.message})
+        res.render("/register")
+    }

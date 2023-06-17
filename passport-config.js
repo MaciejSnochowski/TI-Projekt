@@ -1,0 +1,1 @@
+function inializePassport(passport){}
