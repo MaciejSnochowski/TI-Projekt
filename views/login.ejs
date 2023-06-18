@@ -13,8 +13,9 @@
     <div class="flex justify-center items-center min-h-screen">
       <div class="bg-white p-8 rounded shadow-md w-72">
         <h1 class="text-2xl font-bold mb-4">Logowanie</h1>
-        <form id="login-form">
+      
           <div class="mb-4">
+            <form method="post" action="/logowanie">
             <label for="login" class="block text-gray-700 font-bold mb-2"
               >Login:</label
             >
@@ -36,7 +37,8 @@
               class="border border-gray-300 rounded px-3 py-2 w-full"
             />
           </div>
-          <form method="post" action="/">
+          
+        
             <button
             type="submit"
             class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full  mb-4"
@@ -61,7 +63,7 @@
           </button>
           </form>
         
-        </form>
+   
       </div>
     </div>
   </body>

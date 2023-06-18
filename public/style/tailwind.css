@@ -1,4 +1,4 @@
-@tailwind base;
+
 @tailwind components;
 @tailwind utilities;
 
@@ -36,7 +36,7 @@
         border-radius: 9999px;
         transform-origin: left center;
         transition: opacity var(--animation-timing), width var(--animation-timing);
-
+@tailwind base;
     }
     .my-hamburger-menu input{
         appearance: none;

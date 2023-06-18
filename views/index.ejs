@@ -22,6 +22,7 @@
               <img  src="https://ekstraklasa-frontend-assets.s3.eu-central-1.amazonaws.com/images/logo-ekstraklasa-pko.png" class="object-fill h-16 "  />
             </a>      
         </div>
+        
           <div class="basis-1/2 inline-block text-center my-auto  flex justify-end  ">
             <div><a>
               <button  type="button" onclick="location.href='./logowanie'" class="text-white
@@ -33,6 +34,7 @@
                   Zaloguj się   </button></a>
             </div>
             <div>
+              <% if zalogowany%>
               <button  onclick="location.href='./rejestracja'"     type="button" class="text-white
               bg-gradient-to-r from-blue-500 via-blue-600
                 to-blue-700 hover:bg-gradient-to-br focus:ring-4

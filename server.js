@@ -4,13 +4,27 @@ const express = require('express')
 const app = express()
 const path = require("path");
 const bcrypt =require("bcrypt");
-const passport = require('passport')
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+app.use(session({
+    secret: "some secret",
+    resave: false,
+cookie: {maxAge: 30000},
+saveUninitialized: false}));
 
-const session = require('express-session')
-const inializePassport =require('./passport-config')
-inializePassport(passport)
+const port = 3000;
+const address='127.0.1.1';
+app.listen(port,address)
+{
+
+    console.log("server running on port "+port);
+ 
+
+}
 app.use(express.urlencoded( { extended:false}));
-app.use(express.json())
+app.use(express.json());
+app.use(cookieParser());
+
 
 
 //cors
@@ -27,29 +41,23 @@ const corOptions = {
 const moongose = require('mongoose')
 const User = require('./model/userModel');
 const { error } = require('console');
+
 //informacje na temat serwera
-const port = 3000;
-const address='127.0.1.1';
-app.listen(port,address)
-{
 
-    console.log("server running on port "+port);
- 
-
-}
 
 
 app.set('src', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname,'public')));
-
+let session_id=null;
 
 app.get("/",(req,res)=>{
     let name=null
     res.render('index',{name})
 });
 app.get("/logowanie",(req,res)=>{
+
 res.render("login")
 });
 app.get("/rejestracja",(req,res)=>{
@@ -77,13 +85,40 @@ function validatePassword(passwd) {
     }
     return true;
 }
-
-
+// compare password
+ function comparePassword(plaintextPassword, hash) {
+    
+    return result;
+}
+app.post('/logowanie',async (req,res)=>{
+    console.log(req.sessionID)
+    session_id=req.session;
+try{
+    const localUser = await User.findOne({name:req.body.username});
+    console.log(localUser)
+    
+    if(localUser){
+        loca
+        const result =  await bcrypt.compare(req.body.password, localUser.password);    
+        if(result){
+            res.render("index",{ name: req.body.username});
+            console.log("you are logged")
+        }
+            else{
+                res.status(400).json({error: "Password doesn't match"})
+            }
+    }else{
+        res.status(400).json({error:"User doesn't exist"})
+    }
+}catch(error){
+    res.status(400).json({ message: error.message} );
+}
+});
 app.post('/rejestracja',  async (req,res)=>{
    try{
-    if(!  validatePassword(req.body.password)){
-        return await res.status(400).json({message: "Hasło musi spełniac polityke haseł!"})
-    }
+   // if(!  validatePassword(req.body.password)){
+    //    return await res.status(400).json({message: "Hasło musi spełniac polityke haseł!"}) //do zrobienia
+    //}
     if(req.body.password != req.body.password_sec){
         return res.status(400).json({message: "Hasła muszą być takie same!"})
     }
@@ -119,9 +154,7 @@ res.status(200).json(users)
 moongose.
 connect('mongodb+srv://root:aeuWsd3RhckwEik2@ti-project-api.ly7jac8.mongodb.net/Node-API?retryWrites=true&w=majority')
     .then(()=>{
-        app.listen(3000,()=>{
-            console.log("start  !")
-        })
+       
             console.log("connected to mongoDB")})
             .catch(()=>{
                 console.log('smth went wrong')
