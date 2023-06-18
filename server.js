@@ -50,11 +50,14 @@ app.set('src', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname,'public')));
-let session_id=null;
+let sessionUser;
+let isLogged=null;
 
 app.get("/",(req,res)=>{
-    let name=null
-    res.render('index',{name})
+    const name=null;
+
+    sessionUser=req.session.user;
+    res.render('index',{name,sessionUser})
 });
 app.get("/logowanie",(req,res)=>{
 
@@ -90,19 +93,31 @@ function validatePassword(passwd) {
     
     return result;
 }
+app.get('/wyloguj',(req,res)=>{
+req.session.destroy();
+res.redirect('/');
+});
 app.post('/logowanie',async (req,res)=>{
-    console.log(req.sessionID)
-    session_id=req.session;
+  
+   
 try{
-    const localUser = await User.findOne({name:req.body.username});
-    console.log(localUser)
+
+    const localUser = await User.findOne({username: req.body.username});
+    console.log("username " +req.body.username)
+    console.log("localUser "+localUser)
     
     if(localUser){
-        loca
+        
         const result =  await bcrypt.compare(req.body.password, localUser.password);    
         if(result){
-            res.render("index",{ name: req.body.username});
             console.log("you are logged")
+            req.session.user = req.body.username;
+             sessionUser = req.session.user;
+             name=req.body.username;
+            req.session.save();
+            console.log("localUser._id "+req.session.user)
+            res.render('index',{name,sessionUser})
+
         }
             else{
                 res.status(400).json({error: "Password doesn't match"})
@@ -111,7 +126,7 @@ try{
         res.status(400).json({error:"User doesn't exist"})
     }
 }catch(error){
-    res.status(400).json({ message: error.message} );
+    res.status(400).json({ message: error.message+ " Catch error"} );
 }
 });
 app.post('/rejestracja',  async (req,res)=>{
@@ -128,7 +143,7 @@ app.post('/rejestracja',  async (req,res)=>{
                         })
                         let name=req.body.username;
                         console.log(name);
-                        res.render("index", {name})
+                        res.render("index", {name,sessionUser})
 
    
       
