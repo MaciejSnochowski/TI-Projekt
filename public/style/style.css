@@ -499,6 +499,9 @@ body{
 .bottom-14 {
   bottom: 3.5rem;
 }
+.m-0 {
+  margin: 0px;
+}
 .m-4 {
   margin: 1rem;
 }
@@ -509,10 +512,6 @@ body{
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
-}
-.my-6 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
 }
 .my-auto {
   margin-top: auto;

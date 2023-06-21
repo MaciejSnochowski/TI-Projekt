@@ -56,15 +56,31 @@ app.use(express.static(path.join(__dirname,'public')));
 let sessionUser;
 let isAdmin;
 
-app.get("/",(req,res)=>{
-    const name=null;
-    errorMsg=null;
-    sessionUser=req.session.user;
-    isAdmin=req.session.isAdmin
-    
-    res.render('index',{name,sessionUser,isAdmin})
+request('https://ekstraklasa.konektorn.pl/get/ekstraklasa/kursy', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var jsonOutput = JSON.parse(body)
+      // do more stuff
    
-});
+     let  arrValues =Object.values(jsonOutput)
+      for(var i=0;i<druzyny.length;i++){
+        let druzyna={
+            ranking:i+1,
+            nazwa: druzyny[i],
+            rozegraneMecze: 34,
+            punkty: punktyArr[i],
+            zwyciestwa: zwyciestwaArr[i],
+            remisy: remisyArr[i],
+            porazki: porazkiArr[i],
+            bramki: bramkiArr[i],
+            kursy: arrValues[i]
+        }
+        tabela.push(druzyna);
+      }
+      console.log("api request")
+
+    }
+  
+  })
 app.get("/logowanie",(req,res)=>{
 
 res.render("login",{errorMsg});
@@ -112,7 +128,7 @@ try{
             req.session.save();
             console.log("localUser._id "+req.session.user+ "\n"+req.body.admin)
             errorMsg=null;
-            res.render('index',{name,sessionUser,isAdmin})
+            res.render('index',{name,sessionUser,isAdmin,tabela})
 
         }
             else{
@@ -161,7 +177,7 @@ app.post('/rejestracja',  async (req,res)=>{
     }
 
   
-   console.log("dlugosc "+req.body.password.length)
+ //  console.log("dlugosc "+req.body.password.length)
 
     const usernameInDb = await User.findOne({username: req.body.username});
     
@@ -179,7 +195,7 @@ app.post('/rejestracja',  async (req,res)=>{
                                sessionUser=name;
                                isAdmin=newUser.admin;
                                 errorMsg=null;
-                                res.render('index',{name,sessionUser,isAdmin,errorMsg})
+                                res.render('index',{name,sessionUser,isAdmin,errorMsg,tabela})
 
                     }else {
                         // res.status(400).json({message: "Użytkownik o takim loginie już istnieje!"})
@@ -283,7 +299,26 @@ app.post("/usunUzytkownika",async(req,res)=>{
     }
    
 });
-let arr= []
+let ikony=["https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/12_Rakow_Czestochowa.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/Herb_Legia_Warszawa_2.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2022_23/clubs/05_Lech_Pozna%C5%84.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/10_Pogon_Szczecin.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/09_Piast_Gliwice.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/04_Gornik_Zabrze.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/02_Cracovia.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/15_Warta_Poznan.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/15_Warta_Poznan.png"
+]
+let punktyArr=    [75,66,61,60,53,48,46,45,45,44,43,41,41,41,38,37,30,23];
+let zwyciestwaArr=[23,19,17,17,15,13,12,12,12,12,11,11,11,9 ,9 ,10,8 ,4 ];
+let remisyArr=    [ 6, 9,10, 9, 8, 9,10, 9, 9, 8,10, 8, 8,14,11, 7,6 ,11];
+let porazkiArr=   [ 5, 6, 7, 8,11,12,12,13,13,14,13,15,15,11,14,17,20,19];
+let bramkiArr=    ["63:24","57:37","51:29","57:46","40:31","45:43","41:35"
+,"37:35","35:44","34:41","36:40","38:47","39:48","48:49","35:48","41:50","28:56","33:55"];
+let druzyny= ["Raków Częstochowa","Legia Warszawa","Lech Poznań","Pogoń Szczecin","Piast Gliwice",
+"Górnik Zabrze","Cracovia","Warta Poznań","KGHM Zagłębie Lubin","Radomiak Radom","PGE FKS Stal Mielec",
+"Widzew Łódź","Korona Kielce","Jagiellonia Bialystok","Śląsk Wrocław","Wisła Płock","Lechia Gdańsk","Miedź Legnica"];
+let tabela= []
 app.get("/api",(req,res)=>{
   
 request('https://ekstraklasa.konektorn.pl/get/ekstraklasa/kursy', function (error, response, body) {
@@ -291,17 +326,61 @@ request('https://ekstraklasa.konektorn.pl/get/ekstraklasa/kursy', function (erro
       var jsonOutput = JSON.parse(body)
       // do more stuff
    
-      arr = Object.keys(jsonOutput);
-      let arr2 =Object.value(jsonOutput)
+     let  arrValues =Object.values(jsonOutput)
+      for(var i=0;i<druzyny.length;i++){
+        let druzyna={
+            ranking:1,
+            druzyna: druzyny[i],
+            ikona: ikony[i],
+            rozegraneMecze: 34,
+            punkty: punktyArr[i],
+            zwyciestwa: zwyciestwaArr[i],
+            remisy: remisyArr[i],
+            porazki: porazkiArr[i],
+            bramki: bramkiArr[i],
+            kursy: arrValues[i]
+        }
+        tabela.push(druzyna);
+      }
 
-console.log("array : "+arr)
     }
-    
+  
   })
 
-res.status(200).json( {message: 'aa'});
+  res.status(200).json({tabela: tabela})
 
 });
+
+
+app.get("/",async (req,res)=>{
+    const name=null
+    errorMsg=null
+    sessionUser=req.session.user
+    isAdmin=req.session.isAdmin
+
+    
+    res.render('index',{name,sessionUser,isAdmin,tabela})
+   
+});
+app.get("/api2",(req,res)=>{
+  
+    request('https://ekstraklasa.konektorn.pl/get/ekstraklasa/kursy', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          var jsonOutput = JSON.parse(body)
+          // do more stuff
+       
+          arr = Object.values(jsonOutput);
+        
+
+    console.log("array : "+arr)
+        }
+        
+      })
+    
+    res.status(200).json( {message: 'aa'});
+    
+    });
+    
 
 moongose.
 connect('mongodb+srv://root:aeuWsd3RhckwEik2@ti-project-api.ly7jac8.mongodb.net/Node-API?retryWrites=true&w=majority')
