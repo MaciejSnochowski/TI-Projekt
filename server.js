@@ -307,7 +307,10 @@ let ikony=["https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality
 "https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/04_Gornik_Zabrze.png",
 "https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/02_Cracovia.png",
 "https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/15_Warta_Poznan.png",
-"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/15_Warta_Poznan.png"
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/18_Zaglebie_Lubin.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/11_Radomiak_Radom.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/14_Stal_Mielec.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2022_23/clubs/Widzew-Lodz-herb.png",
 ]
 let punktyArr=    [75,66,61,60,53,48,46,45,45,44,43,41,41,41,38,37,30,23];
 let zwyciestwaArr=[23,19,17,17,15,13,12,12,12,12,11,11,11,9 ,9 ,10,8 ,4 ];
