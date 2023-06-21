@@ -56,31 +56,7 @@ app.use(express.static(path.join(__dirname,'public')));
 let sessionUser;
 let isAdmin;
 
-request('https://ekstraklasa.konektorn.pl/get/ekstraklasa/kursy', function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var jsonOutput = JSON.parse(body)
-      // do more stuff
-   
-     let  arrValues =Object.values(jsonOutput)
-      for(var i=0;i<druzyny.length;i++){
-        let druzyna={
-            ranking:i+1,
-            nazwa: druzyny[i],
-            rozegraneMecze: 34,
-            punkty: punktyArr[i],
-            zwyciestwa: zwyciestwaArr[i],
-            remisy: remisyArr[i],
-            porazki: porazkiArr[i],
-            bramki: bramkiArr[i],
-            kursy: arrValues[i]
-        }
-        tabela.push(druzyna);
-      }
-      console.log("api request")
 
-    }
-  
-  })
 app.get("/logowanie",(req,res)=>{
 
 res.render("login",{errorMsg});
@@ -311,7 +287,13 @@ let ikony=["https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality
 "https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/11_Radomiak_Radom.png",
 "https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/14_Stal_Mielec.png",
 "https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2022_23/clubs/Widzew-Lodz-herb.png",
-]
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2022_23/clubs/Korona-Kielce-herb.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/05_Jagiellonia_Bialystok.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/13_Slask_Wroclaw.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/17_Wisla_Plock.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2021_2022/clubs/07_Lechia_Gdansk.png",
+"https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/de5a136b-59d1-40ce-8b51-c043a004751b/2022_23/clubs/miedz_legnica_herb.png"
+];
 let punktyArr=    [75,66,61,60,53,48,46,45,45,44,43,41,41,41,38,37,30,23];
 let zwyciestwaArr=[23,19,17,17,15,13,12,12,12,12,11,11,11,9 ,9 ,10,8 ,4 ];
 let remisyArr=    [ 6, 9,10, 9, 8, 9,10, 9, 9, 8,10, 8, 8,14,11, 7,6 ,11];
@@ -322,7 +304,7 @@ let druzyny= ["Raków Częstochowa","Legia Warszawa","Lech Poznań","Pogoń Szcz
 "Górnik Zabrze","Cracovia","Warta Poznań","KGHM Zagłębie Lubin","Radomiak Radom","PGE FKS Stal Mielec",
 "Widzew Łódź","Korona Kielce","Jagiellonia Bialystok","Śląsk Wrocław","Wisła Płock","Lechia Gdańsk","Miedź Legnica"];
 let tabela= []
-app.get("/api",(req,res)=>{
+
   
 request('https://ekstraklasa.konektorn.pl/get/ekstraklasa/kursy', function (error, response, body) {
     if (!error && response.statusCode == 200) {
@@ -332,7 +314,7 @@ request('https://ekstraklasa.konektorn.pl/get/ekstraklasa/kursy', function (erro
      let  arrValues =Object.values(jsonOutput)
       for(var i=0;i<druzyny.length;i++){
         let druzyna={
-            ranking:1,
+            ranking: i+1,
             druzyna: druzyny[i],
             ikona: ikony[i],
             rozegraneMecze: 34,
@@ -350,9 +332,7 @@ request('https://ekstraklasa.konektorn.pl/get/ekstraklasa/kursy', function (erro
   
   })
 
-  res.status(200).json({tabela: tabela})
 
-});
 
 
 app.get("/",async (req,res)=>{
