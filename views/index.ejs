@@ -78,14 +78,14 @@
 <section class="main-section mx-24">
   <!-- component -->
   <div class="overflow-x-auto">
-    <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-x-auto">
+    <div class="min-w-screen min-h-screen  flex items-center justify-center  font-sans overflow-x-auto">
         <div class="w-full lg:w-1/9">
           <% if(name != null){ %><p>
             <h1 class="mb-4 text-4xl font-extrabold 
             leading-none tracking-tight 
              md:text-5xl lg:text-6xl text-sky-900"> Witaj <%= name %>!  </h1>
              <% } %> 
-            <div class="bg-white shadow-md rounded  w-full m-0">
+            <div class="bg-white shadow-md rounded w-full  m-0">
             
                 <table class="min-w-max w-full table-auto ">
                     <thead>
@@ -106,7 +106,7 @@
                     </thead>
                     <tbody class="text-gray-600 text-sm font-light">
                       <% for(var druzyna of tabela){%>
-                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <tr class="border-b border-gray-200 bg-white ">
                           <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
                           
                              <%= druzyna.ranking  %>
@@ -122,8 +122,8 @@
                                     <span class="font-medium"><%= druzyna.nazwa %></span>
                                 </div>
                             </td>
-                            <td class="py-3 px-12 text-center">
-                                <div class="flex items-center ">
+                            <td class="py-3 px-12 text-center  ">
+                                <div class="flex items-center  ">
                                   <%= druzyna.rozegraneMecze %>
                                 </div>
                             </td>
@@ -157,7 +157,7 @@
                               </div> 
                             </td>
                             <% } %>
-                        </td>
+                        </tr>
                         <% } %>
                       </tbody> 
                 
