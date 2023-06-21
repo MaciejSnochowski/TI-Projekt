@@ -54,3 +54,5 @@
         res.status(500).json({message: error.message})
         res.render("/register")
     }
+
+    <div class="relative overflow-x-auto shadow-md ">

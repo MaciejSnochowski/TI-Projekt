@@ -10,10 +10,20 @@
      <!--<script src="../script/javascipt-vanilla.js"></script> -->
   </head>
   <body class="bg-gray-100">
-    <div class="flex justify-center items-center min-h-screen">
+  
+  
+      <div class="flex flex-col justify-center items-center min-h-screen flex flex-col ">
+        <% if(errorMsg !=null){ %>
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative bottom-14" role="alert">
+           
+            <span class="block sm:inline"><%=errorMsg %></span>
+           
+          </div>
+        
+      <% }%>
       <div class="bg-white p-8 rounded shadow-md w-72">
         <h1 class="text-2xl font-bold mb-4">Logowanie</h1>
-      
+       
           <div class="mb-4">
             <form method="post" action="/logowanie">
             <label  class="block text-gray-700 font-bold mb-2"
@@ -46,7 +56,8 @@
             Zaloguj się
           </button>
           </form>
-         
+
+
         <form method="get" action="/rejestracja">
             <button
           

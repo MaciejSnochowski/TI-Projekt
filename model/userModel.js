@@ -1,4 +1,5 @@
-const mongoose=require('mongoose')
+const mongoose=require('mongoose');
+const { boolean } = require('webidl-conversions');
 
 const userSchema= mongoose.Schema(
 
@@ -14,6 +15,14 @@ const userSchema= mongoose.Schema(
         required: [true,"Enter password"]
      //  required: false
     },
+    admin:{
+        type:Boolean,
+        required:false
+    },
+    blocked:{
+        type:Boolean,
+        required:false
+    }
        
 },
 {
@@ -21,5 +30,6 @@ const userSchema= mongoose.Schema(
 }
 
 )
-const User = mongoose.model('User',userSchema);
+
+const User = mongoose.model('users',userSchema);
 module.exports = User;

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logowanie</title>
+
+    <link href="/style/style.css" rel="stylesheet">
+
+     <!--<script src="../script/javascipt-vanilla.js"></script> -->
+  </head>
+  <body class="bg-gray-100">
+    
+    
+
+  <nav class=" w-full bg-sky-900 flex flex-row px-24">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 basis-1/2">
+      <a href="./" class=" ">
+          <img  src="https://ekstraklasa-frontend-assets.s3.eu-central-1.amazonaws.com/images/logo-ekstraklasa-pko.png" class="object-fill h-16 "  />
+        </a>      
+    </div>
+        
+      <div class="basis-1/2 inline-block text-center my-auto  flex justify-end  ">
+        <div><a>
+          <button  type="button" onclick="location.href='./'" class="text-white
+          bg-gradient-to-r from-blue-500 via-blue-600
+            to-blue-700 hover:bg-gradient-to-br focus:ring-4
+            focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800
+              shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80
+              font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2  ">
+              Tabela   </button></a>
+        </div>
+       
+           
+       
+     
+       
+       
+      </div>
+         
+          
+
+      </nav>
+  
+      <section class="main-section mx-24">
+        <!-- component -->
+        <div class="overflow-x-auto">
+          <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
+              <div class="w-full "> 
+                      <table class="min-w-max w-full table-auto ">
+                          <thead >
+                              <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                <th class="py-3 px-6 text-center">Nazwa użytkownika</th>
+                                <th class="py-3 px-6 text-center">Czy ma uprawnienia admina?</th>
+                                <th class="py-3 px-6 text-left"></th>
+                                  <th class="py-3 px-6 text-left"></th>
+                                  <th class="py-3 px-6 text-left"></th>                                     
+                                
+                                </tr>
+                          </thead>
+                          <tbody class="text-gray-600 text-sm font-light">
+                            <%  for(var user of users){%>
+                             <%if(user.username=="admin"){}else{%>
+                              <tr class="border-b border-gray-200 hover:bg-gray-100">
+                             
+                                <td class="py-3 px-6 text-center whitespace-nowrap text-center w-2">
+                                  <div class="flex items-center flex justify-center" id=" userName">
+                                 <p class="mb-4 font-extrabold text-sm
+                                 leading-none tracking-tight 
+                                   text-sky-900">
+                                  <%=  user.username %>
+                                </p> 
+                                  </div>
+                                </td>
+                                
+                                <td class="py-3 px-6 text-center whitespace-nowrap">
+                                  <div class="flex items-center flex justify-center">
+                                    <p class="mb-4  font-extrabold 
+                                 leading-none tracking-tight 
+                                 text-sm text-sky-900">
+                                  <%=  user.admin %>
+                                </p> 
+                                    
+                                   <label for="zmienUprawnienia"
+                                    value='<%= user.admin %>'></label>
+                                  </div>
+                              </td>
+                              <form method="post" action="/zablokujUzytkownika">
+                                  <td class="py-3 px-6 text-center whitespace-nowrap">
+                                      <div class="flex items-center">
+                                        <input type="hidden" id="blocked"
+                                        name="blocked" value= "<%- user.blocked -%>">
+                                        <input type="hidden" id="user_name"
+                                        name="user_name" value= "<%- user.username -%>">
+                                        <% if(user.blocked==false){ %>
+                                        <button type="submit" class="text-white bg-gradient-to-r
+                                         from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br
+                                          focus:ring-4 focus:outline-none focus:ring-purple-300
+                                           dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50
+                                            dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg
+                                             text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                             
+                                             Zablokuj </button>
+                                             <% }else{ %>
+                                              <button type="submit" class="text-white bg-gradient-to-r
+                                              from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br
+                                               focus:ring-4 focus:outline-none focus:ring-purple-300
+                                                dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50
+                                                 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg
+                                                  text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                                  
+                                                  Odblokuj </button>
+                                              <% } %>
+                                      </div>
+                                  </td>
+                              </form>
+                                  <form method="post" action="/usunUzytkownika">
+                                  <td class="py-3 px-12 text-center">
+                                      <div class="flex items-center ">
+                                       
+                                        <input type="hidden" id="user_name" name="user_name" value= "<%- user.username -%>">
+                                        <button type="submit" class="text-white bg-gradient-to-r 
+                                        from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br
+                                         focus:ring-4 focus:outline-none focus:ring-red-300
+                                          dark:focus:ring-red-800 shadow-lg shadow-red-500/50
+                                           dark:shadow-lg dark:shadow-red-800/80 font-medium
+                                            rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Usuń</button>
+                                      </div>
+                                  </td>
+                                </form>
+                                  <form method="post" action="/zmienUprawnienia">
+                                  <td class="py-3 px-6 text-center">
+                                      <div class="flex items-center ">
+                                      
+                                         
+                                         <input type="hidden" id="permissions" name="permissions" value= "<%- user.admin -%>">
+                                         <input type="hidden" id="user_name" name="user_name" value= "<%- user.username -%>">
+                                        <button   type="submit"  name="zmienUprawnienia" class="text-gray-900 bg-gradient-to-r
+                                         from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br
+                                          focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800
+                                           shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 
+                                           font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                           Zmień uprawnienia</button>
+                                      </div>
+                                    </form>
+                                      </td>
+                                  </td>
+                              </tr>
+                              <% } %>
+                              <% } %>
+                         </tbody>
+                      </table>
+                  
+              </div>
+          </div>
+        </div>
+      </section>
+      
+      
+      <footer class=" bg-sky-900 rounded-lg shadow m-4 ">
+        <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+          <span class="text-sm text-white sm:text-center ">© 2023 Maciej Snochowski, Jacek Nowicki ™</a>
+        </span>
+        
+        </div>
+      </footer>
+  </body>
+</html>

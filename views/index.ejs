@@ -10,13 +10,16 @@
     <title>Najlepsza Liga</title>
 </head>
 <body >
-  <nav class=" w-full bg-sky-900 flex flex-row ">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 basis-1/2">
-      <a href="#" class=" ">
+  <nav class=" w-full bg-sky-900 flex flex-row  px-24 ">
+    
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between p-4 basis-1/2">
+      <a href="./" class=" ">
           <img  src="https://ekstraklasa-frontend-assets.s3.eu-central-1.amazonaws.com/images/logo-ekstraklasa-pko.png" class="object-fill h-16 "  />
         </a>      
     </div>
-      <div class="basis-1/2 inline-block text-center my-auto  flex justify-end  ">
+    <div class="basis-1/2 inline-block text-center my-auto  flex justify-end  ">
+    <% if(sessionUser == null){ %>
+   
         <div><a>
           <button  type="button" onclick="location.href='./logowanie'" class="text-white
           bg-gradient-to-r from-blue-500 via-blue-600
@@ -27,6 +30,7 @@
               Zaloguj się   </button></a>
         </div>
         <div>
+              
           <button  onclick="location.href='./rejestracja'"     type="button" class="text-white
           bg-gradient-to-r from-blue-500 via-blue-600
             to-blue-700 hover:bg-gradient-to-br focus:ring-4
@@ -34,49 +38,9 @@
               shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80
               font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">
               Zarejestruj się </button>
-        </div>
-     
-       
-       
-      </div>
-         
-          
-
-  </nav>
-  <div class="mx-20">
-
-
-
- 
-   <!-- ten paragraf pomaga wczytać do tailwina klasy: my-hidden my-hidden-d<p class="my-hidden my-hidden-d">test</p> -->
-<<<<<<< HEAD
-      <nav class="  bg-sky-900 flex flex-row ">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 basis-1/2">
-          <a href="#" class=" ">
-              <img  src="https://ekstraklasa-frontend-assets.s3.eu-central-1.amazonaws.com/images/logo-ekstraklasa-pko.png" class="object-fill h-16 "  />
-            </a>      
-        </div>
-        
-          <div class="basis-1/2 inline-block text-center my-auto  flex justify-end  ">
-            <div><a>
-              <button  type="button" onclick="location.href='./logowanie'" class="text-white
-              bg-gradient-to-r from-blue-500 via-blue-600
-                to-blue-700 hover:bg-gradient-to-br focus:ring-4
-                focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800
-                  shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80
-                  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2  ">
-                  Zaloguj się   </button></a>
-            </div>
-            <div>
-              <% if(sessionUser == null){ %>
-              <button  onclick="location.href='./rejestracja'"     type="button" class="text-white
-              bg-gradient-to-r from-blue-500 via-blue-600
-                to-blue-700 hover:bg-gradient-to-br focus:ring-4
-                focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800
-                  shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80
-                  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">
-                  Zarejestruj się </button>
+              
                   <% }else{ %>
+                    <div class=" my-auto ">
                     <button  onclick="location.href='./wyloguj'"     type="button" class="text-white
                     bg-gradient-to-r from-blue-500 via-blue-600
                       to-blue-700 hover:bg-gradient-to-br focus:ring-4
@@ -84,880 +48,1036 @@
                         shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80
                         font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">
                         Wyloguj się </button>
-                    <% } %>
-            </div>
-            <% if(sessionUser != null){ %><h1>sesja: <%= sessionUser %>! </h1>  <% } %>
+                    </div >
+                        <% } %>
+
+                    <% if(isAdmin == true){ %>
+                      <div class= "my-auto ">
+                    <button  onclick="location.href='./adminPanel'"     type="button" class="text-white
+                    bg-gradient-to-r from-blue-500 via-blue-600
+                      to-blue-700 hover:bg-gradient-to-br focus:ring-4
+                      focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800
+                        shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80
+                        font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2  ">
+                        Panel admina </button>
+                      </div>
+                        <% } %>
+        </div>
+            <!-- if(sessionUser != null){ h1>sesja: sessionUser %>! </h1>   -->
        
+     
+       
+       
+      </div>
+  
          
-           
-           
-          </div>
-             
-              
+          
 
       </nav>
-=======
-      
->>>>>>> bb2e5fef9830d80e843159bf7a3e7f059e340caf
 
-<section class="main-section">
+<section class="main-section mx-24">
   <!-- component -->
-<div class="overflow-x-auto">
-  <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
-      <div class="w-full lg:w-6">
-        <% if(name != null){ %><p>Witaj <%= name %>! </p> <% } %> 
-          <div class="bg-white shadow-md rounded my-6">
-              <table class="min-w-max w-full table-auto">
-                  <thead>
-                      <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                        <th class="py-3 px-6 text-center">Ranking</th>
-                          <th class="py-3 px-6 text-left">Drużyna</th>
-                          <th class="py-3 px-6 text-left">Rozegrane mecze</th>
-                          <th class="py-3 px-6 text-center">Punkty</th>
-                          <th class="py-3 px-6 text-center">Zwycięstwa</th>
-                          <th class="py-3 px-6 text-center">Remisy</th>
-                          <th class="py-3 px-6 text-center">Porażki</th>
-                          <th class="py-3 px-6 text-center">Bramki</th>
+  <div class="overflow-x-auto">
+    <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
+        <div class="w-full lg:w-1/9">
+          <% if(name != null){ %><p>
+            <h1 class="mb-4 text-4xl font-extrabold 
+            leading-none tracking-tight 
+             md:text-5xl lg:text-6xl text-sky-900"> Witaj <%= name %>!  </h1>
+             <% } %> 
+            <div class="bg-white shadow-md rounded my-6 ">
+            
+                <table class="min-w-max w-full table-auto ">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                          <th class="py-3 px-6 text-center">Ranking</th>
+                            <th class="py-3 px-6 text-left">Drużyna</th>
+                            <th class="py-3 px-6 text-left">Rozegrane mecze</th>
+                            <th class="py-3 px-6 text-center">Punkty</th>
+                            <th class="py-3 px-6 text-center">Zwycięstwa</th>
+                            <th class="py-3 px-6 text-center">Remisy</th>
+                            <th class="py-3 px-6 text-center">Porażki</th>
+                            <th class="py-3 px-6 text-center">Bramki</th>
+                            <% if(sessionUser != null){ %>
+                            <th class="py-3 px-6 text-center">Kursy</th>
+                            <% } %>
+
+                          </tr>
+                    </thead>
+                    <tbody class="text-gray-600 text-sm font-light">
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              1.
+                           
+                          </td>
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/12_Rakow_Czestochowa.png"/>
+                                    </div>
+                                    <span class="font-medium">Raków Częstochowa</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  34
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   75
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                23
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    6
+                                </div>
+                            </td>
+                            <td>  
+                              <div class="flex item-center justify-center">
+                                  5
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  63:24
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% } %>
+                        </td>
+  
                         </tr>
-                  </thead>
-                  <tbody class="text-gray-600 text-sm font-light">
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            1.
-                         
-                        </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/12_Rakow_Czestochowa.png"/>
-                                  </div>
-                                  <span class="font-medium">Raków Częstochowa</span>
-                              </div>
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              2.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8  " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/Herb_Legia_Warszawa_2.png"/>
+                                    </div>
+                                    <span class="font-medium">Legia Warszawa</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-
-                      </tr>
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            2.
-                         
-                        </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8  " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/Herb_Legia_Warszawa_2.png"/>
-                                  </div>
-                                  <span class="font-medium">Legia Warszawa</span>
-                              </div>
-                          </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                                  3
+                              </div> 
+                            </td>
+                            <td>
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-                      </tr>
-
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        ,
-
-
-                        
-                            3.
-                         
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/10_Pogon_Szczecin.png"/>
-                                  </div>
-                                  <span class="font-medium">Pogoń Szczecin</span>
-                              </div>
+                        </tr>
+  
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          ,
+  
+  
+                          
+                              3.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/10_Pogon_Szczecin.png"/>
+                                    </div>
+                                    <span class="font-medium">Pogoń Szczecin</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-                      </tr>
-
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            4.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2022_23/clubs/05_Lech_Poznań.png"/>
-                                  </div>
-                                  <span class="font-medium">Lech Poznań</span>
-                              </div>
+                        </tr>
+  
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              4.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2022_23/clubs/05_Lech_Poznań.png"/>
+                                    </div>
+                                    <span class="font-medium">Lech Poznań</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-                      </tr>
-
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            5.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/15_Warta_Poznan.png"/>
-                                  </div>
-                                  <span class="font-medium">Warta Poznań</span>
-                              </div>
+                        </tr>
+  
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              5.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/15_Warta_Poznan.png"/>
+                                    </div>
+                                    <span class="font-medium">Warta Poznań</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-
-                      </tr>
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            6.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/09_Piast_Gliwice.png"/>
-                                  </div>
-                                  <span class="font-medium">Piast Gliwice</span>
-                              </div>
+  
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              6.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/09_Piast_Gliwice.png"/>
+                                    </div>
+                                    <span class="font-medium">Piast Gliwice</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-                      </tr>
-
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            7.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/02_Cracovia.png"/>
-                                  </div>
-                                  <span class="font-medium">Cracovia</span>
-                              </div>
+                        </tr>
+  
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              7.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/02_Cracovia.png"/>
+                                    </div>
+                                    <span class="font-medium">Cracovia</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-                      </tr>
-
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            8.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2022_23/clubs/Widzew-Lodz-herb.png"/>
-                                  </div>
-                                  <span class="font-medium">Widzew Łódź</span>
-                              </div>
+                        </tr>
+  
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              8.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2022_23/clubs/Widzew-Lodz-herb.png"/>
+                                    </div>
+                                    <span class="font-medium">Widzew Łódź</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-                      </tr>
-
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            9.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8  " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/05_Jagiellonia_Bialystok.png"/>
-                                  </div>
-                                  <span class="font-medium">Jagiellonia Bialystok</span>
-                              </div>
+                        </tr>
+  
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              9.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8  " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/05_Jagiellonia_Bialystok.png"/>
+                                    </div>
+                                    <span class="font-medium">Jagiellonia Bialystok</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-
-                      </tr>
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            10.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/17_Wisla_Plock.png"/>
-                                  </div>
-                                  <span class="font-medium">
-                                    Wisła Płock</span>
-                              </div>
+  
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              10.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/17_Wisla_Plock.png"/>
+                                    </div>
+                                    <span class="font-medium">
+                                      Wisła Płock</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-                      </tr>
-
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            11.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/04_Gornik_Zabrze.png"/>
-                                  </div>
-                                  <span class="font-medium">Górnik Zabrze</span>
-                              </div>
+                        </tr>
+  
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              11.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/04_Gornik_Zabrze.png"/>
+                                    </div>
+                                    <span class="font-medium">Górnik Zabrze</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-                      </tr>
-
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            12.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/14_Stal_Mielec.png"/>
-                                  </div>
-                                  <span class="font-medium">PGE FKS Stal Mielec</span>
-                              </div>
+                        </tr>
+  
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              12.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/14_Stal_Mielec.png"/>
+                                    </div>
+                                    <span class="font-medium">PGE FKS Stal Mielec</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-                      </tr>
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            13.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/11_Radomiak_Radom.png"/>
-                                  </div>
-                                  <span class="font-medium">Radomiak Radom</span>
-                              </div>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              13.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/11_Radomiak_Radom.png"/>
+                                    </div>
+                                    <span class="font-medium">Radomiak Radom</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-
-                      </tr>
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            14.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8  " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2022_23/clubs/Korona-Kielce-herb.png"/>
-                                  </div>
-                                  <span class="font-medium">Korona Kielce</span>
-                              </div>
+  
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              14.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8  " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2022_23/clubs/Korona-Kielce-herb.png"/>
+                                    </div>
+                                    <span class="font-medium">Korona Kielce</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-                      </tr>
-
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            15.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/18_Zaglebie_Lubin.png"/>
-                                  </div>
-                                  <span class="font-medium">KGHM Zagłębie Lubin</span>
-                              </div>
+                        </tr>
+  
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              15.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/18_Zaglebie_Lubin.png"/>
+                                    </div>
+                                    <span class="font-medium">KGHM Zagłębie Lubin</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-                      </tr>
-
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            16.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/13_Slask_Wroclaw.png"/>
-                                  </div>
-                                  <span class="font-medium">Śląsk Wrocław</span>
-                              </div>
+                        </tr>
+  
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              16.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/13_Slask_Wroclaw.png"/>
+                                    </div>
+                                    <span class="font-medium">Śląsk Wrocław</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-                      </tr>
-                      
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
-                        
-                            17.
-                         
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
                         </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/07_Lechia_Gdansk.png"/>
-                                  </div>
-                                  <span class="font-medium">Lechia Gdańsk</span>
-                              </div>
-                          </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex item-center justify-center">
-                                  5
-                              </div>
-                          </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-
-                      </tr>
-                      <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                        </tr>
                         
-                            18.
-                         
-                        </td>
-                          <td class="py-3 px-6 text-left whitespace-nowrap">
-                              <div class="flex items-center">
-                                  <div class="mr-2">
-                                    <img class="w-8 h-8  " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2022_23/clubs/miedz_legnica_herb.png"/>
-                                  </div>
-                                  <span class="font-medium">Miedź Legnica</span>
-                              </div>
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              17.
+                           
                           </td>
-                          <td class="py-3 px-12 text-center">
-                              <div class="flex items-center ">
-                                29
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              <div class="flex items-center justify-center">
-                                 71
-                              </div>
-                          </td>
-                          <td class="py-3 px-6 text-center">
-                              22
-                          </td>
-                          <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8 " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2021_2022/clubs/07_Lechia_Gdansk.png"/>
+                                    </div>
+                                    <span class="font-medium">Lechia Gdańsk</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
                               <div class="flex item-center justify-center">
-                                  5
-                              </div>
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
+                       
+                        </td>
+  
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                          <td class="py-3 px-6 text-left whitespace-nowrap text-center w-2">
+                          
+                              18.
+                           
                           </td>
-                          <td>  
-                            <div class="flex item-center justify-center">
-                                3
-                            </div> 
-                          </td>
-                          <td>
-                            <div class="flex item-center justify-center">
-                                60:19
-                            </div> 
-                          </td>
-                     
-                      </td>
-                      </tr>
-
-                 </tbody>
-              </table>
-          </div>
-      </div>
+                            <td class="py-3 px-6 text-left whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="mr-2">
+                                      <img class="w-8 h-8  " src="https://d2vzq0pwftw3zc.cloudfront.net/fit-in/100x100/filters:quality(30)/1/2022_23/clubs/miedz_legnica_herb.png"/>
+                                    </div>
+                                    <span class="font-medium">Miedź Legnica</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-12 text-center">
+                                <div class="flex items-center ">
+                                  29
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center justify-center">
+                                   71
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                22
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex item-center justify-center">
+                                    5
+                                </div>
+                            </td>
+                            <td>  
+                              <div class="flex item-center justify-center">
+                                  3
+                              </div> 
+                            </td>
+                            <td>
+                              <div class="flex item-center justify-center">
+                                  60:19
+                              </div> 
+                            </td>
+                            <% if(sessionUser != null){ %>
+                              <td>
+                                <div class="flex item-center justify-center">
+                                    60:19
+                                </div> 
+                              </td>
+                              <% } %>
+                       
+                       
+                        </td>
+                        </tr>
+  
+                   </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
   </div>
-</div>
 </section>
 
 
