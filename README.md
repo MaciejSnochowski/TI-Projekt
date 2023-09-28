@@ -1,1 +1,1 @@
-# Applikacja internetowa symulująca tabele ekstraklasy
+# Applikacja internetowa symulująca stronę ekstraklasy
