@@ -1,7 +1,1 @@
-# TI-Projekt
-
-TO DO LIST:
-- LOGOWANIE/REJESTRACJA
-- KURSY
-- DB
-- DYNAMICZNA TABELA
+# Applikacja internetowa symulująca tabele ekstraklasy
